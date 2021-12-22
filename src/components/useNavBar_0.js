@@ -1,9 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import './App.css';
-import Home from "./Home";
+import './useNavBar.css';
 
-function App() {
+const useNavbar=()=> {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
@@ -25,22 +23,17 @@ function App() {
   }, [])
 
   return (
-    <Router>
     <nav>
       {(toggleMenu || screenWidth > 500) && (
-        <div className="list">
-          <Link className="items" to="/">Home</Link>
-          <Link className="items" to="/">SERVICES</Link>
-          <Link className="items" to="/">CONTACT</Link>
-        </div>
+        <ul className="list">
+          <li className="items">Home</li>
+          <li className="items">Services</li>
+          <li className="items">Contact</li>
+        </ul>
       )}
+
       <button onClick={toggleNav} className="btn">Menu</button>
     </nav>
-      <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/beautiful_home" element={<Home/>} />
-      </Routes>
-    </Router>
   )
 }
-export default App;
+export default useNavbar;

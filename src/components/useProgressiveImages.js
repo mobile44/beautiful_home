@@ -1,21 +1,31 @@
 import React, {useState, useEffect} from "react";
 
-const useProgressiveImages = (highQualitySrc, lowQualitySrc) => {
-  const [src, setSrc] = useState(lowQualitySrc);
-  const Images = ["Img0","Img1","Img2","Img3"];
-  useEffect(() => { 
-    setSrc(lowQualitySrc);
-    for (let i = 0; i<highQualitySrc.length; i++) {
-      Images[i] = new Image();
-      Images[i].src = highQualitySrc;
-      Images[i].onload = setTimeout(() => {
-        setSrc(highQualitySrc[i]);
-      },500);
-    }
-  }, [highQualitySrc, lowQualitySrc]);
-  return (<div>{Images}</div>); 
+//const useProgressiveImages = React.memo(({ src, placeholder, alt = "" }) => {
+const useProgressiveImages=(src, placeholder, alt)=>{
+  const [loading, setLoading] = useState(true);
+  const [currentSrc, updateSrc] = useState(placeholder);
 
-  //const imgObj = React.createElement("img",{src:image,alt:"flat"},null);
-  //return (<div>{imgObj}</div>);
+  useEffect(() => {
+    // start loading original image
+    const imageToLoad = new Image();
+    imageToLoad.src = src;
+    imageToLoad.onload = () => {
+      // When image is loaded replace the src and set loading to false
+      setLoading(false);
+      updateSrc(src);
+    }
+  }, [src])
+
+  return (
+    <img
+      src={currentSrc}
+      style={{
+        opacity: loading ? 0.5 : 1,
+        transition: "opacity .15s linear"
+      }}
+      alt={alt}
+    />
+  )
 };
+
 export default useProgressiveImages;

@@ -1,0 +1,19 @@
+.pageContent {
+    padding-top:50px;
+  }
+  .colBlur {
+    width: 300px;
+    filter: blur(20px);
+    transition: none;
+    display:block;
+  }
+  .colReal {
+    width: 300px;
+    filter: none;
+    transition: 0.3s ease-out;
+    display:block;
+  }
+  .colReal:hover {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+  }
