@@ -1,31 +1,15 @@
-import React, {useState, useEffect} from "react";
+import {useState, useEffect} from "react";
 
-//const useProgressiveImages = React.memo(({ src, placeholder, alt = "" }) => {
-const useProgressiveImages=(src, placeholder, alt)=>{
-  const [loading, setLoading] = useState(true);
-  const [currentSrc, updateSrc] = useState(placeholder);
-
+const useProgressive = (lowQualitySrc, highQualitySrc) => {
+  const [src, setSrc] = useState(lowQualitySrc);
   useEffect(() => {
-    // start loading original image
-    const imageToLoad = new Image();
-    imageToLoad.src = src;
-    imageToLoad.onload = () => {
-      // When image is loaded replace the src and set loading to false
-      setLoading(false);
-      updateSrc(src);
-    }
-  }, [src])
-
-  return (
-    <img
-      src={currentSrc}
-      style={{
-        opacity: loading ? 0.5 : 1,
-        transition: "opacity .15s linear"
-      }}
-      alt={alt}
-    />
-  )
+    setSrc(lowQualitySrc);
+    const img = new Image();
+    img.src = highQualitySrc;
+    img.onload = setTimeout(() => {
+      setSrc(highQualitySrc);
+    },500);
+  }, [lowQualitySrc, highQualitySrc]);
+  return [{ blur: src === lowQualitySrc }];
 };
-
-export default useProgressiveImages;
+export default useProgressive;

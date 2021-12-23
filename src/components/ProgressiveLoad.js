@@ -1,6 +1,6 @@
 import {useState, useEffect} from "react";
 
-const useProgressive = (lowQualitySrc, highQualitySrc) => {
+const ProgressiveLoad = (lowQualitySrc, highQualitySrc) => {
   const [src, setSrc] = useState(lowQualitySrc);
   useEffect(() => {
     setSrc(lowQualitySrc);
@@ -12,4 +12,4 @@ const useProgressive = (lowQualitySrc, highQualitySrc) => {
   }, [lowQualitySrc, highQualitySrc]);
   return [src, { blur: src === lowQualitySrc }];
 };
-export default useProgressive;
+export default ProgressiveLoad;

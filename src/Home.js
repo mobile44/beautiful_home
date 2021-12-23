@@ -1,15 +1,15 @@
 import React from "react";
-import useProgressive from "./components/useProgressive";
+import ProgressiveLoad from "./components/ProgressiveLoad";
 import {flatImageData, flatImageDataBlur} from "./components/useLoadImages";
 import "./Home.css";
 
 const Home = () => {
   const src = [0, 1, 2, 3];
   let blur;
-  [src[0], { blur }] = useProgressive(flatImageDataBlur[0], flatImageData[0]);
-  [src[1]] = useProgressive(flatImageDataBlur[1], flatImageData[1]);
-  [src[2]] = useProgressive(flatImageDataBlur[2], flatImageData[2]);
-  [src[3]] = useProgressive(flatImageDataBlur[3], flatImageData[3]);
+  [src[0], { blur }] = ProgressiveLoad(flatImageDataBlur[0], flatImageData[0]);
+  [src[1]] = ProgressiveLoad(flatImageDataBlur[1], flatImageData[1]);
+  [src[2]] = ProgressiveLoad(flatImageDataBlur[2], flatImageData[2]);
+  [src[3]] = ProgressiveLoad(flatImageDataBlur[3], flatImageData[3]);
 
   return (
     <div className="pageContent">

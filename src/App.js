@@ -2,13 +2,30 @@ import React, {useState, useEffect} from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import './App.css';
 import Home from "./Home";
+import Album from "./Album";
 
-function App() {
+function App(props) {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [activeHome, setActiveHome] = useState(false);
+  const [activeAlbum, setActiveAlbum] = useState(false);
+  const [activeContact, setActiveContact] = useState(false);
 
   const toggleNav = () => {
     setToggleMenu(!toggleMenu);
+  }
+
+  const setActive = (activeItem) => {
+    if (activeItem==="Home") {
+      setActiveHome(true);
+      setActiveAlbum(false);
+      setActiveContact(false);
+    }
+    if (activeItem==="Album") {
+      setActiveHome(false);
+      setActiveAlbum(true);
+      setActiveContact(false);
+    }
   }
 
   useEffect(() => {
@@ -29,8 +46,8 @@ function App() {
     <nav>
       {(toggleMenu || screenWidth > 500) && (
         <div className="list">
-          <Link className="items" to="/">Home</Link>
-          <Link className="items" to="/">SERVICES</Link>
+          <Link className={activeHome?"aitems":"items"} to="/" onClick={()=>setActive("Home")}>Home</Link>
+          <Link className={activeAlbum?"aitems":"items"} to="/album" onClick={()=>setActive("Album")}>Album</Link>
           <Link className="items" to="/">CONTACT</Link>
         </div>
       )}
@@ -39,6 +56,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/beautiful_home" element={<Home/>} />
+        <Route path="/album" element={<Album/>} />
       </Routes>
     </Router>
   )

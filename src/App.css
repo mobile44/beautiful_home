@@ -27,8 +27,21 @@ nav {
   color: #f1f1f1;
   /*cursor: pointer;*/
 }
+.aitems {
+  position: relative;
+  /*top:10px;*/
+  text-decoration: none;
+  margin-right: 20px;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: #eb0c0c;
+  /*cursor: pointer;*/
+}
 .items:hover {
   /*background-color: rgb(5, 109, 74);*/
+  color:rgb(36, 22, 1)
+}
+.aitems:hover {
   color:rgb(36, 22, 1)
 }
 .btn {
