@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { HashRouter as Router, Routes, Route, Link } from "react-router-dom";
 import './App.css';
 import Home from "./Home";
 import Album from "./Album";
@@ -79,7 +79,7 @@ function App(props) {
     <nav>
       {(toggleMenu || screenWidth > 500) && (
         <div className="list">
-          <Link className={activeHome?"aitems":"items"} to="/" onClick={()=>updatePage("Home")}>Home</Link>
+          <Link className={activeHome?"aitems":"items"} to="/beautiful_home/" onClick={()=>updatePage("Home")}>Home</Link>
           <Link className={activeAlbum?"aitems":"items"} to="/beautiful_home/album" onClick={()=>updatePage("Album")}>Album</Link>
           <Link className={activeContact?"aitems":"items"} to="/beautiful_home/contact" onClick={()=>updatePage("Contact")}>Contact</Link>
         </div>
@@ -92,8 +92,8 @@ function App(props) {
       </div>
     </nav>
       <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/beautiful_home" element={<Home/>} />
+        {/*<Route path="/" element={<Home/>} />*/}
+        <Route path="/beautiful_home/" element={<Home/>} />
         <Route path="/beautiful_home/album" element={<Album/>} />
         <Route path="/beautiful_home/contact" element={<Contact/>} />
         {/*<Route path="/album" element={<Album/>} />
