@@ -6,10 +6,10 @@ import "./Album.css";
 const Album = () => {
   const src = [0, 1, 2, 3];
   let blur;
-  [src[0], { blur }] = ProgressiveLoad(flatImageDataBlur[0], flatImageData[0]);
-  [src[1]] = ProgressiveLoad(flatImageDataBlur[1], flatImageData[1]);
-  [src[2]] = ProgressiveLoad(flatImageDataBlur[2], flatImageData[2]);
-  [src[3]] = ProgressiveLoad(flatImageDataBlur[3], flatImageData[3]);
+  [src[0], { blur }] = ProgressiveLoad(flatImageDataBlur[3], flatImageData[3]);
+  [src[1]] = ProgressiveLoad(flatImageDataBlur[2], flatImageData[2]);
+  [src[2]] = ProgressiveLoad(flatImageDataBlur[1], flatImageData[1]);
+  [src[3]] = ProgressiveLoad(flatImageDataBlur[0], flatImageData[0]);
 
   return (
     <div className="pageContent">
