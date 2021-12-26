@@ -1,51 +1,36 @@
-import React from 'react';
-import './Album.css';
-import ProgressiveImage from './components/ProgressiveImage';
-import cloudy from "./images/flat_cloudy.jpg";
-import cloudyBlur from "./images/flat_cloudy_blur.jpg";
-import tree from "./images/flat_darkness_tree.jpg";
-import treeBlur from "./images/flat_darkness_tree_blur.jpg";
-import evening from "./images/flat_evening.jpg";
-import eveningBlur from "./images/flat_evening_blur.jpg";
+import React from "react";
+import ProgressiveLoad from "./components/ProgressiveLoad";
+import {flatImageData, flatImageDataBlur} from "./components/useLoadImages";
+import "./Album.css";
 
+const Album = () => {
+  const src = [0, 1, 2, 3];
+  let blur;
+  [src[0], { blur }] = ProgressiveLoad(flatImageDataBlur[0], flatImageData[0]);
+  [src[1]] = ProgressiveLoad(flatImageDataBlur[1], flatImageData[1]);
+  [src[2]] = ProgressiveLoad(flatImageDataBlur[2], flatImageData[2]);
+  [src[3]] = ProgressiveLoad(flatImageDataBlur[3], flatImageData[3]);
 
-function Album() {
-  const images = [
-    {
-      src: cloudy,
-      placeholder: cloudyBlur,
-      alt: "Cloudy Day"
-    },
-    {
-      src: tree,
-      placeholder: treeBlur,
-      alt: "Darkness Tree"
-    },
-    {
-      src: evening,
-      placeholder: eveningBlur,
-      alt: "Evening Sky"
-    }
-  ]
   return (
-    <div className="app">
-      <header className="app-header">
-        <h1>Progressive Load Image Using React Hooks</h1>
-        <div className="wrapper">
-          {
-            images.map((item, i) => (
-              <ProgressiveImage
-                key={i}
-                src={item.src}
-                placeholder={item.placeholder}
-                alt={item.alt}
-              />
-            ))
-          }
-        </div>
-      </header>
+    <div className="pageContent">
+      <img className={blur?"colBlur":"colReal"}
+        src={src[0]}
+        alt="img"
+      />
+      <img className={blur?"colBlur":"colReal"}
+        src={src[1]}
+        alt="img"
+      />
+      <img className={blur?"colBlur":"colReal"}
+        src={src[2]}
+        alt="img"
+      />
+      <img className={blur?"colBlur":"colReal"}
+        src={src[3]}
+        alt="img"
+      />
     </div>
+        
   )
 }
-
 export default Album;

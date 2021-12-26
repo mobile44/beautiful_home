@@ -30,12 +30,6 @@
 }
 .shortMenu {
   display: none;
-  position: absolute;
-  right: 10px;
-  top: 7px;
-  padding: 5px;
-  display: inline-block;
-  cursor: pointer;
 }
 .bar1, .bar2, .bar3 {
   width: 35px;
@@ -50,7 +44,7 @@
     left: 0;
     top:0;
     width: 100%;
-    height: 62.5px;
+    height: 66.4px;
     background-color: #333;
   }
   .items:nth-child(2){
@@ -61,5 +55,10 @@
   }
   .shortMenu {
     display: block;
+    position: absolute;
+    right: 10px;
+    top: 7px;
+    padding: 5px;
+    cursor: pointer;
   }
 }

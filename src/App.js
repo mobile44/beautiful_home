@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import './App.css';
 import Home from "./Home";
 import Album from "./Album";
+import Contact from "./Contact";
 
 function App(props) {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -16,24 +17,28 @@ function App(props) {
   }
 
   useEffect(() => { //initiate && reload update
-    const currentPage=JSON.parse(window.localStorage.getItem('activePage'));
-    if (currentPage==="Home" || currentPage==="") {
-      setActiveHome(true);
-      setActiveAlbum(false);
-      setActiveContact(false);
-      window.localStorage.setItem('activePage', JSON.stringify('Home'));
-    }
-    if (currentPage==="Album") {
-      setActiveHome(false);
-      setActiveAlbum(true);
-      setActiveContact(false);
-      window.localStorage.setItem('activePage', JSON.stringify('Album'));
-    }
-    if (currentPage==="Contact") {
-      setActiveHome(false);
-      setActiveAlbum(false);
-      setActiveContact(true);
-      window.localStorage.setItem('activePage', JSON.stringify('Contact'));
+    try {
+      const currentPage=JSON.parse(window.localStorage.getItem('activePage'));
+      if (currentPage==="Home" || currentPage==="") {
+        setActiveHome(true);
+        setActiveAlbum(false);
+        setActiveContact(false);
+        window.localStorage.setItem('activePage', JSON.stringify('Home'));
+      }
+      if (currentPage==="Album") {
+        setActiveHome(false);
+        setActiveAlbum(true);
+        setActiveContact(false);
+        window.localStorage.setItem('activePage', JSON.stringify('Album'));
+      }
+      if (currentPage==="Contact") {
+        setActiveHome(false);
+        setActiveAlbum(false);
+        setActiveContact(true);
+        window.localStorage.setItem('activePage', JSON.stringify('Contact'));
+      }
+    } catch(err) {
+      console.log(err)
     }
   },[setActiveHome,setActiveAlbum,setActiveContact]);
     
@@ -76,7 +81,7 @@ function App(props) {
         <div className="list">
           <Link className={activeHome?"aitems":"items"} to="/" onClick={()=>updatePage("Home")}>Home</Link>
           <Link className={activeAlbum?"aitems":"items"} to="/album" onClick={()=>updatePage("Album")}>Album</Link>
-          <Link className={activeContact?"aitems":"items"} to="/" onClick={()=>updatePage("Contact")}>CONTACT</Link>
+          <Link className={activeContact?"aitems":"items"} to="/contact" onClick={()=>updatePage("Contact")}>Contact</Link>
         </div>
       )}
       {/*<button onClick={toggleNav} className="btn">Menu</button>*/}
@@ -90,6 +95,7 @@ function App(props) {
         <Route path="/" element={<Home/>} />
         <Route path="/beautiful_home" element={<Home/>} />
         <Route path="/album" element={<Album/>} />
+        <Route path="/contact" element={<Contact/>} />
       </Routes>
     </Router>
   )
