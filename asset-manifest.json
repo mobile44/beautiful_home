@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/beautiful_home/static/css/main.79f6805f.css",
-    "main.js": "/beautiful_home/static/js/main.95a525ec.js",
+    "main.js": "/beautiful_home/static/js/main.aaa479c7.js",
     "static/js/787.26a3b1ba.chunk.js": "/beautiful_home/static/js/787.26a3b1ba.chunk.js",
     "static/media/flat_germinated_tree.jpg": "/beautiful_home/static/media/flat_germinated_tree.2b3463d7cabb94c8224c.jpg",
     "static/media/flat_darkness_tree.jpg": "/beautiful_home/static/media/flat_darkness_tree.6b7ca3c3091edae067f0.jpg",
@@ -10,11 +10,11 @@
     "static/media/flat_germinated_tree_blur.jpg": "/beautiful_home/static/media/flat_germinated_tree_blur.4567155299a4973acf81.jpg",
     "index.html": "/beautiful_home/index.html",
     "main.79f6805f.css.map": "/beautiful_home/static/css/main.79f6805f.css.map",
-    "main.95a525ec.js.map": "/beautiful_home/static/js/main.95a525ec.js.map",
+    "main.aaa479c7.js.map": "/beautiful_home/static/js/main.aaa479c7.js.map",
     "787.26a3b1ba.chunk.js.map": "/beautiful_home/static/js/787.26a3b1ba.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.79f6805f.css",
-    "static/js/main.95a525ec.js"
+    "static/js/main.aaa479c7.js"
   ]
 }
