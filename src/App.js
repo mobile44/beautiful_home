@@ -22,29 +22,35 @@ function App(props) {
 
   useEffect(() => { //initiate && reload update
     try {
-      const currentPage=JSON.parse(window.localStorage.getItem('activePage'));
-      if (currentPage==="Home" || currentPage==="") {
+      //const currentPage=JSON.parse(window.localStorage.getItem('activePage'));
+      if (windowPath==="home" || windowPath==="") {
         setActiveHome(true);
         setActiveAlbum(false);
         setActiveContact(false);
-        window.localStorage.setItem('activePage', JSON.stringify('Home'));
-      }
-      if (currentPage==="Album") {
-        setActiveHome(false);
-        setActiveAlbum(true);
-        setActiveContact(false);
-        window.localStorage.setItem('activePage', JSON.stringify('Album'));
-      }
-      if (currentPage==="Contact") {
-        setActiveHome(false);
-        setActiveAlbum(false);
-        setActiveContact(true);
-        window.localStorage.setItem('activePage', JSON.stringify('Contact'));
+        //window.localStorage.setItem('activePage', JSON.stringify('Home'));
+      } else {
+        if (windowPath==="album") {
+          setActiveHome(false);
+          setActiveAlbum(true);
+          setActiveContact(false);
+          //window.localStorage.setItem('activePage', JSON.stringify('Album'));
+        } else {
+          if (windowPath==="contact") {
+            setActiveHome(false);
+            setActiveAlbum(false);
+            setActiveContact(true);
+            //window.localStorage.setItem('activePage', JSON.stringify('Contact'));
+          } else {
+            setActiveHome(true);
+            setActiveAlbum(false);
+            setActiveContact(false);
+          }
+        }
       }
     } catch(err) {
       console.log(err)
     }
-  },[setActiveHome,setActiveAlbum,setActiveContact]);
+  },[setActiveHome,setActiveAlbum,setActiveContact,windowPath]);
     
   function updatePage(activePage) { //by click event to update activePage
     if (activePage==="Home") {
@@ -62,7 +68,7 @@ function App(props) {
       setActiveAlbum(false);
       setActiveContact(true);
     }
-    window.localStorage.setItem('activePage', JSON.stringify(activePage));
+    //window.localStorage.setItem('activePage', JSON.stringify(activePage));
   }
 
   useEffect(() => {
@@ -100,6 +106,7 @@ function App(props) {
         <Route path="/beautiful_home/" element={<Home/>} />
         <Route path="/beautiful_home/album" element={<Album/>} />
         <Route path="/beautiful_home/contact" element={<Contact/>} />
+        <Route path="/beautiful_home/*" element={<Home/>} />
       </Routes>
     </Router>
   )
