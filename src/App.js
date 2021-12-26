@@ -80,8 +80,8 @@ function App(props) {
       {(toggleMenu || screenWidth > 500) && (
         <div className="list">
           <Link className={activeHome?"aitems":"items"} to="/" onClick={()=>updatePage("Home")}>Home</Link>
-          <Link className={activeAlbum?"aitems":"items"} to="/album" onClick={()=>updatePage("Album")}>Album</Link>
-          <Link className={activeContact?"aitems":"items"} to="/contact" onClick={()=>updatePage("Contact")}>Contact</Link>
+          <Link className={activeAlbum?"aitems":"items"} to="/beautiful_home/album" onClick={()=>updatePage("Album")}>Album</Link>
+          <Link className={activeContact?"aitems":"items"} to="/beautiful_home/contact" onClick={()=>updatePage("Contact")}>Contact</Link>
         </div>
       )}
       {/*<button onClick={toggleNav} className="btn">Menu</button>*/}
@@ -94,8 +94,10 @@ function App(props) {
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/beautiful_home" element={<Home/>} />
-        <Route path="/album" element={<Album/>} />
-        <Route path="/contact" element={<Contact/>} />
+        <Route path="/beautiful_home/album" element={<Album/>} />
+        <Route path="/beautiful_home/contact" element={<Contact/>} />
+        {/*<Route path="/album" element={<Album/>} />
+        <Route path="/contact" element={<Contact/>} />*/}
       </Routes>
     </Router>
   )
