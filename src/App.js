@@ -15,17 +15,45 @@ function App(props) {
     setToggleMenu(!toggleMenu);
   }
 
-  const setActive = (activeItem) => {
-    if (activeItem==="Home") {
+  useEffect(() => { //initiate && reload update
+    const currentPage=JSON.parse(window.localStorage.getItem('activePage'));
+    if (currentPage==="Home" || currentPage==="") {
+      setActiveHome(true);
+      setActiveAlbum(false);
+      setActiveContact(false);
+      window.localStorage.setItem('activePage', JSON.stringify('Home'));
+    }
+    if (currentPage==="Album") {
+      setActiveHome(false);
+      setActiveAlbum(true);
+      setActiveContact(false);
+      window.localStorage.setItem('activePage', JSON.stringify('Album'));
+    }
+    if (currentPage==="Contact") {
+      setActiveHome(false);
+      setActiveAlbum(false);
+      setActiveContact(true);
+      window.localStorage.setItem('activePage', JSON.stringify('Contact'));
+    }
+  },[setActiveHome,setActiveAlbum,setActiveContact]);
+    
+  function updatePage(activePage) { //by click event to update activePage
+    if (activePage==="Home") {
       setActiveHome(true);
       setActiveAlbum(false);
       setActiveContact(false);
     }
-    if (activeItem==="Album") {
+    if (activePage==="Album") {
       setActiveHome(false);
       setActiveAlbum(true);
       setActiveContact(false);
     }
+    if (activePage==="Contact") {
+      setActiveHome(false);
+      setActiveAlbum(false);
+      setActiveContact(true);
+    }
+    window.localStorage.setItem('activePage', JSON.stringify(activePage));
   }
 
   useEffect(() => {
@@ -46,12 +74,17 @@ function App(props) {
     <nav>
       {(toggleMenu || screenWidth > 500) && (
         <div className="list">
-          <Link className={activeHome?"aitems":"items"} to="/" onClick={()=>setActive("Home")}>Home</Link>
-          <Link className={activeAlbum?"aitems":"items"} to="/album" onClick={()=>setActive("Album")}>Album</Link>
-          <Link className="items" to="/">CONTACT</Link>
+          <Link className={activeHome?"aitems":"items"} to="/" onClick={()=>updatePage("Home")}>Home</Link>
+          <Link className={activeAlbum?"aitems":"items"} to="/album" onClick={()=>updatePage("Album")}>Album</Link>
+          <Link className={activeContact?"aitems":"items"} to="/" onClick={()=>updatePage("Contact")}>CONTACT</Link>
         </div>
       )}
-      <button onClick={toggleNav} className="btn">Menu</button>
+      {/*<button onClick={toggleNav} className="btn">Menu</button>*/}
+      <div className="shortMenu" onClick={toggleNav}>
+        <div className="bar1"></div>
+        <div className="bar2"></div>
+        <div className="bar3"></div>
+      </div>
     </nav>
       <Routes>
         <Route path="/" element={<Home/>} />

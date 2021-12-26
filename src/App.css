@@ -1,79 +1,65 @@
-nav {
-  position: fixed;
-  width: 100%;
-  height: 50px;
-  background: #333;
-  /*background: linear-gradient(45deg, rgb(156, 14, 156), midnightblue);*/
-}
 .list {
-  /*list-style-type: none;*/
-  background-color: rgb(6, 77, 53);
-  height: 100%;
-  padding-left: 20px;
-  /*background: linear-gradient(45deg, rgb(156, 14, 156), midnightblue);*/
-  /*height: 100%;*/
-  /*display: flex;*/
-  /*justify-content:flex-start;*/
-  /*align-items:flex-start;*/
-  /*position: relative;*/
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #333;
+  list-style-type: none;
 }
 .items {
-  position: relative;
-  /*top:10px;*/
+  display:inline-block;
   text-decoration: none;
-  margin-right: 20px;
   font-size: 20px;
+  padding: 20px;
   text-transform: uppercase;
   color: #f1f1f1;
-  /*cursor: pointer;*/
 }
 .aitems {
-  position: relative;
-  /*top:10px;*/
+  display:inline-block;
   text-decoration: none;
-  margin-right: 20px;
   font-size: 20px;
+  padding: 20px;
   text-transform: uppercase;
   color: #eb0c0c;
-  /*cursor: pointer;*/
 }
 .items:hover {
-  /*background-color: rgb(5, 109, 74);*/
-  color:rgb(36, 22, 1)
+  color:rgb(7, 250, 136)
 }
 .aitems:hover {
-  color:rgb(36, 22, 1)
+  color:rgb(99, 8, 134)
 }
-.btn {
+.shortMenu {
   display: none;
   position: absolute;
   right: 10px;
   top: 7px;
   padding: 5px;
-  color: #000;
-  font-size: 18px;
+  display: inline-block;
+  cursor: pointer;
+}
+.bar1, .bar2, .bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: rgb(198, 240, 12);
+  margin: 6px 0;
+  transition: 0.4s;
 }
 @media screen and (max-width: 500px){
-  .list {
-    /*flex-direction: column;*/
-    height: 100%;
-  }
-  .items:nth-child(1){
-    border-top: 1px solid rgba(255, 255, 255, 0.555);
-    margin-top: 50px;
-  }
-  .items {
-    float: left;
-    background-color: lightslategrey;
+  nav {
+    position:absolute;
+    left: 0;
+    top:0;
     width: 100%;
-    border-top: 1px solid rgba(255, 255, 255, 0.555);
-    text-align: center;
-    /*margin-right: 0px;*/
-    /*padding: 20px 0;*/
-    padding-top: 20px;
-    padding-bottom: 20px;
+    height: 62.5px;
+    background-color: #333;
   }
-  .btn {
+  .items:nth-child(2){
+    display: block;
+  }
+  .aitems:nth-child(2){
+    display: block;
+  }
+  .shortMenu {
     display: block;
   }
 }
