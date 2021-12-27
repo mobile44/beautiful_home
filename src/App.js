@@ -5,21 +5,50 @@ import Home from "./Home";
 import Album from "./Album";
 import Contact from "./Contact";
 
-function App(props) {
+function App() {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [activeHome, setActiveHome] = useState(false);
   const [activeAlbum, setActiveAlbum] = useState(false);
   const [activeContact, setActiveContact] = useState(false);
-  
+  const [currentPage, setCurrentPage] = useState("");
+
   const toggleNav = () => {
     setToggleMenu(!toggleMenu);
   }
   console.log("Path: ", window.location.pathname);
-  let windowPath = window.location.pathname;
-  windowPath = windowPath.substring(16,windowPath.length);
-  console.log("Pathname:", windowPath);
-
+  console.log("Page: ", currentPage);
+  let appPage;
+  try {
+    appPage=JSON.parse(window.localStorage.getItem('appPage'));
+    console.log("App: ", appPage);
+  } catch(err) {
+    console.log(err);
+  }
+  useEffect(()=> {
+    if (currentPage==="" && appPage!=="") {
+      if (appPage==="home") {
+        setActiveHome(true);
+        setActiveAlbum(false);
+        setActiveContact(false);
+      }
+      if (appPage==="album") {
+        setActiveHome(false);
+        setActiveAlbum(true);
+        setActiveContact(false);
+      }
+      if (appPage==="contact") {
+        setActiveHome(false);
+        setActiveAlbum(false);
+        setActiveContact(true);
+      }
+    }
+  },[currentPage,appPage]);
+  
+  //let windowPath = window.location.pathname;
+  //windowPath = windowPath.substring(16,windowPath.length);
+  //console.log("Pathname:", windowPath);
+  /*
   useEffect(() => { //initiate && reload update
     try {
       //const currentPage=JSON.parse(window.localStorage.getItem('activePage'));
@@ -51,8 +80,9 @@ function App(props) {
       console.log(err)
     }
   },[setActiveHome,setActiveAlbum,setActiveContact,windowPath]);
-    
+    */
   function updatePage(activePage) { //by click event to update activePage
+    setCurrentPage(activePage);
     if (activePage==="Home") {
       setActiveHome(true);
       setActiveAlbum(false);
@@ -104,7 +134,7 @@ function App(props) {
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/beautiful_home/" element={<Home/>} />
-        <Route path="/beautiful_home/album" element={<Album/>} />
+        <Route path="/beautiful_home/album" element={<Album/> } />
         <Route path="/beautiful_home/contact" element={<Contact/>} />
         <Route path="/beautiful_home/*" element={<Home/>} />
       </Routes>

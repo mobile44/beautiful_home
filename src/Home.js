@@ -4,6 +4,7 @@ import {flatImageData, flatImageDataBlur} from "./components/useLoadImages";
 import "./Home.css";
 
 const Home = () => {
+  window.localStorage.setItem('appPage', JSON.stringify('home'));
   const src = [0, 1, 2, 3];
   let blur;
   [src[0], { blur }] = ProgressiveLoad(flatImageDataBlur[0], flatImageData[0]);

@@ -10,6 +10,7 @@ import eveningBlur from "./images/flat_evening_blur.jpg";
 
 
 function Contact() {
+  window.localStorage.setItem('appPage', JSON.stringify('contact'));
   const images = [
     {
       src: cloudy,
