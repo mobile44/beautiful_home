@@ -1,9 +1,18 @@
-import React from "react";
+import React, {useState,useEffect} from "react";
 import ProgressiveLoad from "./components/ProgressiveLoad";
 import {flatImageData, flatImageDataBlur} from "./components/useLoadImages";
 import "./Home.css";
 
-const Home = () => {
+const Home = (props) => {
+  useEffect(()=>{
+    try {
+      props.updateHome(true);
+      props.updateAlbum(false);
+      props.updateContact(false);
+    } catch(err) {}
+    
+  },[props])
+  
   window.localStorage.setItem('appPage', JSON.stringify('home'));
   const src = [0, 1, 2, 3];
   let blur;
