@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/beautiful_home/static/css/main.8ffa1684.css",
+    "main.css": "/beautiful_home/static/css/main.391747e6.css",
     "main.js": "/beautiful_home/static/js/main.397076bb.js",
     "static/js/787.26a3b1ba.chunk.js": "/beautiful_home/static/js/787.26a3b1ba.chunk.js",
     "static/media/flat_germinated_tree.jpg": "/beautiful_home/static/media/flat_germinated_tree.2b3463d7cabb94c8224c.jpg",
@@ -9,12 +9,12 @@
     "static/media/flat_cloudy.jpg": "/beautiful_home/static/media/flat_cloudy.e2cca1348dcb0f067895.jpg",
     "static/media/flat_germinated_tree_blur.jpg": "/beautiful_home/static/media/flat_germinated_tree_blur.4567155299a4973acf81.jpg",
     "index.html": "/beautiful_home/index.html",
-    "main.8ffa1684.css.map": "/beautiful_home/static/css/main.8ffa1684.css.map",
+    "main.391747e6.css.map": "/beautiful_home/static/css/main.391747e6.css.map",
     "main.397076bb.js.map": "/beautiful_home/static/js/main.397076bb.js.map",
     "787.26a3b1ba.chunk.js.map": "/beautiful_home/static/js/787.26a3b1ba.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8ffa1684.css",
+    "static/css/main.391747e6.css",
     "static/js/main.397076bb.js"
   ]
 }
