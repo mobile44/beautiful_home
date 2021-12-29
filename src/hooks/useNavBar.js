@@ -24,7 +24,7 @@ const useNavbar=()=> {
   }, [])
 
   return (
-    <Router>
+    {/*<Router>
     <nav>
       {(toggleMenu || screenWidth > 500) && (
         <div className="list">
@@ -41,7 +41,7 @@ const useNavbar=()=> {
         <Route path="/services" element={<SERVICES pageName="SERVICES"/>} />
         <Route path="/contact" element={<CONTACT pageName="CONTACT"/>} />
       </Routes>
-    </Router>
+    </Router>*/}
   )
 }
 export default useNavbar;

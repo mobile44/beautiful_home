@@ -1,6 +1,6 @@
-import React, {useState,useEffect} from "react";
-import ProgressiveLoad from "./components/ProgressiveLoad";
-import {flatImageData, flatImageDataBlur} from "./components/useLoadImages";
+import React, {useEffect} from "react";
+import ProgressiveLoad from "./hooks/ProgressiveLoad";
+import {flatImageData, flatImageDataBlur} from "./hooks/useLoadImages";
 import "./Home.css";
 
 const Home = (props) => {
@@ -8,6 +8,7 @@ const Home = (props) => {
     try {
       props.updateHome(true);
       props.updateAlbum(false);
+      props.updateData(false);
       props.updateContact(false);
     } catch(err) {}
     

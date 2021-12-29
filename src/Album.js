@@ -1,6 +1,6 @@
 import React from "react";
-import ProgressiveLoad from "./components/ProgressiveLoad";
-import {flatImageData, flatImageDataBlur} from "./components/useLoadImages";
+import ProgressiveLoad from "./hooks/ProgressiveLoad";
+import {flatImageData, flatImageDataBlur} from "./hooks/useLoadImages";
 import "./Album.css";
 //import { useParams } from 'react-router-dom';
 

@@ -3,6 +3,7 @@ import { HashRouter as Router, Routes, Route, Link} from "react-router-dom";
 import './App.css';
 import Home from "./Home";
 import Album from "./Album";
+import Data from "./Form";
 import Contact from "./Contact";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [activeHome, setActiveHome] = useState(false);
   const [activeAlbum, setActiveAlbum] = useState(false);
+  const [activeData, setActiveData] = useState(false);
   const [activeContact, setActiveContact] = useState(false);
   const [currentPage, setCurrentPage] = useState("");
 
@@ -30,16 +32,25 @@ function App() {
       if (appPage==="home") {
         setActiveHome(true);
         setActiveAlbum(false);
+        setActiveData(false);
         setActiveContact(false);
       }
       if (appPage==="album") {
         setActiveHome(false);
         setActiveAlbum(true);
+        setActiveData(false);
+        setActiveContact(false);
+      }
+      if (appPage==="data") {
+        setActiveHome(false);
+        setActiveAlbum(false);
+        setActiveData(true);
         setActiveContact(false);
       }
       if (appPage==="contact") {
         setActiveHome(false);
         setActiveAlbum(false);
+        setActiveData(false);
         setActiveContact(true);
       }
     }
@@ -86,16 +97,25 @@ function App() {
     if (activePage==="Home") {
       setActiveHome(true);
       setActiveAlbum(false);
+      setActiveData(false);
       setActiveContact(false);
     }
     if (activePage==="Album") {
       setActiveHome(false);
       setActiveAlbum(true);
+      setActiveData(false);
+      setActiveContact(false);
+    }
+    if (activePage==="Data") {
+      setActiveHome(false);
+      setActiveAlbum(false);
+      setActiveData(true);
       setActiveContact(false);
     }
     if (activePage==="Contact") {
       setActiveHome(false);
       setActiveAlbum(false);
+      setActiveData(false);
       setActiveContact(true);
     }
     //window.localStorage.setItem('activePage', JSON.stringify(activePage));
@@ -120,6 +140,7 @@ function App() {
           <div className="list">
             <Link className={activeHome?"aitems":"items"} to="/beautiful_home/" onClick={()=>updatePage("Home")}>Home</Link>
             <Link className={activeAlbum?"aitems":"items"} to="/beautiful_home/album" onClick={()=>updatePage("Album")}>Album</Link>
+            <Link className={activeData?"aitems":"items"} to="/beautiful_home/data" onClick={()=>updatePage("Data")}>Data</Link>
             <Link className={activeContact?"aitems":"items"} to="/beautiful_home/contact" onClick={()=>updatePage("Contact")}>Contact</Link>
           </div>
         )}
@@ -134,8 +155,9 @@ function App() {
         <Route path="/" element={<Home/>} />
         <Route path="/beautiful_home/" element={<Home/>} />
         <Route path="/beautiful_home/album" element={<Album/> } />
+        <Route path="/beautiful_home/data" element={<Data/>} />
         <Route path="/beautiful_home/contact" element={<Contact/>} />
-        <Route path="*" element={<Home updateHome={setActiveHome} updateAlbum={setActiveAlbum} updateContact={setActiveContact} />} />
+        <Route path="*" element={<Home updateHome={setActiveHome} updateAlbum={setActiveAlbum} updateData={setActiveData} updateContact={setActiveContact} />} />
       </Routes>
     </Router>
   )
