@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react';
 import { useInput } from './hooks/useInput';
 //import Table from './Table';
 //import Form from './Form';
@@ -42,17 +42,31 @@ class Data extends Component {
   */
 const Form=(props)=> {
   const { value:firstName, bind:bindFirstName, reset:resetFirstName } = useInput('');
-  const { value:lastName, bind:bindLastName, reset:resetLastName } = useInput('');
-  window.localStorage.setItem('appPage', JSON.stringify('data'));
+  const { value:lastName, bind:bindLastName, reset:resetLastName } = useInput(''); 
+  const [names, setNames] = useState([]);
+  let name = [];
+  window.localStorage.setItem('appPage', JSON.stringify('form'));
   
-  const handleSubmit = (evt) => {
+  const HandleSubmit = (evt) => {
     evt.preventDefault();
-    alert(`Submitting Name ${firstName} ${lastName}`);
+    //alert(`Submitting Name ${firstName} ${lastName}`);
+    if (firstName!=="") {
+        name["firstname"] = `${firstName}`;
+        name["secondname"] = `${lastName}`;
+        name = [name["firstname"],name["secondname"]]
+        setNames(names=>[...names,name]);
+        console.log("Length: ",names.length);
+        console.log("Names:", names);
+    }
     resetFirstName();
     resetLastName();
   }
+
+  
+  
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
+    <form onSubmit={HandleSubmit}>
       <label>
         First Name:
         <input type="text" {...bindFirstName} />
@@ -63,6 +77,30 @@ const Form=(props)=> {
       </label>
       <input type="submit" value="Submit" />
     </form>
+    {names.length>0 &&
+      <div>
+        <p>Record: {names.length}</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Key</th>
+            <th>Firt Name</th>
+            <th>Last Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          {names.map((c,i)=>
+            <tr key={i}>
+              <td>{i}</td>
+              <td>{c[0]}</td>
+              <td>{c[1]}</td>
+            </tr>
+          )}
+        </tbody>
+      </table>
+      </div>
+    }
+  </div>
   );
 }
 

@@ -3,7 +3,7 @@ import { HashRouter as Router, Routes, Route, Link} from "react-router-dom";
 import './App.css';
 import Home from "./Home";
 import Album from "./Album";
-import Data from "./Form";
+import Form from "./Form";
 import Contact from "./Contact";
 
 function App() {
@@ -11,46 +11,46 @@ function App() {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [activeHome, setActiveHome] = useState(false);
   const [activeAlbum, setActiveAlbum] = useState(false);
-  const [activeData, setActiveData] = useState(false);
+  const [activeForm, setActiveForm] = useState(false);
   const [activeContact, setActiveContact] = useState(false);
   const [currentPage, setCurrentPage] = useState("");
 
   const toggleNav = () => {
     setToggleMenu(!toggleMenu);
   }
-  console.log("Path: ", window.location.pathname);
-  console.log("Page: ", currentPage);
+  //console.log("Path: ", window.location.pathname);
+  //console.log("Page: ", currentPage);
   let appPage;
   try {
     appPage=JSON.parse(window.localStorage.getItem('appPage'));
-    console.log("App: ", appPage);
+    //console.log("App: ", appPage);
   } catch(err) {
-    console.log(err);
+    //console.log(err);
   }
   useEffect(()=> {
     if (currentPage==="" && appPage!=="") {
       if (appPage==="home") {
         setActiveHome(true);
         setActiveAlbum(false);
-        setActiveData(false);
+        setActiveForm(false);
         setActiveContact(false);
       }
       if (appPage==="album") {
         setActiveHome(false);
         setActiveAlbum(true);
-        setActiveData(false);
+        setActiveForm(false);
         setActiveContact(false);
       }
-      if (appPage==="data") {
+      if (appPage==="form") {
         setActiveHome(false);
         setActiveAlbum(false);
-        setActiveData(true);
+        setActiveForm(true);
         setActiveContact(false);
       }
       if (appPage==="contact") {
         setActiveHome(false);
         setActiveAlbum(false);
-        setActiveData(false);
+        setActiveForm(false);
         setActiveContact(true);
       }
     }
@@ -97,25 +97,25 @@ function App() {
     if (activePage==="Home") {
       setActiveHome(true);
       setActiveAlbum(false);
-      setActiveData(false);
+      setActiveForm(false);
       setActiveContact(false);
     }
     if (activePage==="Album") {
       setActiveHome(false);
       setActiveAlbum(true);
-      setActiveData(false);
+      setActiveForm(false);
       setActiveContact(false);
     }
-    if (activePage==="Data") {
+    if (activePage==="Form") {
       setActiveHome(false);
       setActiveAlbum(false);
-      setActiveData(true);
+      setActiveForm(true);
       setActiveContact(false);
     }
     if (activePage==="Contact") {
       setActiveHome(false);
       setActiveAlbum(false);
-      setActiveData(false);
+      setActiveForm(false);
       setActiveContact(true);
     }
     //window.localStorage.setItem('activePage', JSON.stringify(activePage));
@@ -140,7 +140,7 @@ function App() {
           <div className="list">
             <Link className={activeHome?"aitems":"items"} to="/beautiful_home/" onClick={()=>updatePage("Home")}>Home</Link>
             <Link className={activeAlbum?"aitems":"items"} to="/beautiful_home/album" onClick={()=>updatePage("Album")}>Album</Link>
-            <Link className={activeData?"aitems":"items"} to="/beautiful_home/data" onClick={()=>updatePage("Data")}>Data</Link>
+            <Link className={activeForm?"aitems":"items"} to="/beautiful_home/form" onClick={()=>updatePage("Form")}>Form</Link>
             <Link className={activeContact?"aitems":"items"} to="/beautiful_home/contact" onClick={()=>updatePage("Contact")}>Contact</Link>
           </div>
         )}
@@ -155,9 +155,9 @@ function App() {
         <Route path="/" element={<Home/>} />
         <Route path="/beautiful_home/" element={<Home/>} />
         <Route path="/beautiful_home/album" element={<Album/> } />
-        <Route path="/beautiful_home/data" element={<Data/>} />
+        <Route path="/beautiful_home/form" element={<Form/>} />
         <Route path="/beautiful_home/contact" element={<Contact/>} />
-        <Route path="*" element={<Home updateHome={setActiveHome} updateAlbum={setActiveAlbum} updateData={setActiveData} updateContact={setActiveContact} />} />
+        <Route path="*" element={<Home updateHome={setActiveHome} updateAlbum={setActiveAlbum} updateForm={setActiveForm} updateContact={setActiveContact} />} />
       </Routes>
     </Router>
   )

@@ -8,7 +8,7 @@ const Home = (props) => {
     try {
       props.updateHome(true);
       props.updateAlbum(false);
-      props.updateData(false);
+      props.updateForm(false);
       props.updateContact(false);
     } catch(err) {}
     
