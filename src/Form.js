@@ -1,5 +1,6 @@
-import React, {useState,useEffect} from 'react';
+import React, {useState} from 'react';
 import { useInput } from './hooks/useInput';
+import "./Form.css";
 //import Table from './Table';
 //import Form from './Form';
 
@@ -50,13 +51,15 @@ const Form=(props)=> {
   const HandleSubmit = (evt) => {
     evt.preventDefault();
     //alert(`Submitting Name ${firstName} ${lastName}`);
-    if (firstName!=="") {
+    if (firstName!=="" && lastName!=="") {
         name["firstname"] = `${firstName}`;
         name["secondname"] = `${lastName}`;
         name = [name["firstname"],name["secondname"]]
         setNames(names=>[...names,name]);
-        console.log("Length: ",names.length);
-        console.log("Names:", names);
+        //console.log("Length: ",names.length);
+        //console.log("Names:", names);
+    } else {
+      alert(`Invalid input ${firstName} ${lastName}`);
     }
     resetFirstName();
     resetLastName();
@@ -65,17 +68,17 @@ const Form=(props)=> {
   
   
   return (
-    <div>
+    <div className="formContent">
     <form onSubmit={HandleSubmit}>
-      <label>
+      <label className="firstName">
         First Name:
         <input type="text" {...bindFirstName} />
       </label>
-      <label>
+      <label className="lastName">
         Last Name:
         <input type="text" {...bindLastName} />
       </label>
-      <input type="submit" value="Submit" />
+      <input className="submitButton" type="submit" value="Submit" />
     </form>
     {names.length>0 &&
       <div>

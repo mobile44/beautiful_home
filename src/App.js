@@ -17,6 +17,7 @@ function App() {
 
   const toggleNav = () => {
     setToggleMenu(!toggleMenu);
+    console.log("Toggle:", toggleMenu);
   }
   //console.log("Path: ", window.location.pathname);
   //console.log("Page: ", currentPage);
@@ -56,44 +57,11 @@ function App() {
     }
   },[currentPage,appPage]);
   
-  //let windowPath = window.location.pathname;
-  //windowPath = windowPath.substring(16,windowPath.length);
-  //console.log("Pathname:", windowPath);
-  /*
-  useEffect(() => { //initiate && reload update
-    try {
-      //const currentPage=JSON.parse(window.localStorage.getItem('activePage'));
-      if (windowPath==="home" || windowPath==="") {
-        setActiveHome(true);
-        setActiveAlbum(false);
-        setActiveContact(false);
-        //window.localStorage.setItem('activePage', JSON.stringify('Home'));
-      } else {
-        if (windowPath==="album") {
-          setActiveHome(false);
-          setActiveAlbum(true);
-          setActiveContact(false);
-          //window.localStorage.setItem('activePage', JSON.stringify('Album'));
-        } else {
-          if (windowPath==="contact") {
-            setActiveHome(false);
-            setActiveAlbum(false);
-            setActiveContact(true);
-            //window.localStorage.setItem('activePage', JSON.stringify('Contact'));
-          } else {
-            setActiveHome(true);
-            setActiveAlbum(false);
-            setActiveContact(false);
-          }
-        }
-      }
-    } catch(err) {
-      console.log(err)
-    }
-  },[setActiveHome,setActiveAlbum,setActiveContact,windowPath]);
-    */
   function updatePage(activePage) { //by click event to update activePage
     setCurrentPage(activePage);
+    if (toggleMenu) {
+      setToggleMenu(false);
+    }
     if (activePage==="Home") {
       setActiveHome(true);
       setActiveAlbum(false);
