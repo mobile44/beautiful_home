@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/beautiful_home/static/css/main.9e002940.css",
-    "main.js": "/beautiful_home/static/js/main.24e8db90.js",
+    "main.css": "/beautiful_home/static/css/main.feae423c.css",
+    "main.js": "/beautiful_home/static/js/main.ebc547d4.js",
     "static/js/787.26a3b1ba.chunk.js": "/beautiful_home/static/js/787.26a3b1ba.chunk.js",
     "static/media/flat_germinated_tree.jpg": "/beautiful_home/static/media/flat_germinated_tree.2b3463d7cabb94c8224c.jpg",
     "static/media/flat_darkness_tree.jpg": "/beautiful_home/static/media/flat_darkness_tree.6b7ca3c3091edae067f0.jpg",
@@ -9,12 +9,12 @@
     "static/media/flat_cloudy.jpg": "/beautiful_home/static/media/flat_cloudy.e2cca1348dcb0f067895.jpg",
     "static/media/flat_germinated_tree_blur.jpg": "/beautiful_home/static/media/flat_germinated_tree_blur.4567155299a4973acf81.jpg",
     "index.html": "/beautiful_home/index.html",
-    "main.9e002940.css.map": "/beautiful_home/static/css/main.9e002940.css.map",
-    "main.24e8db90.js.map": "/beautiful_home/static/js/main.24e8db90.js.map",
+    "main.feae423c.css.map": "/beautiful_home/static/css/main.feae423c.css.map",
+    "main.ebc547d4.js.map": "/beautiful_home/static/js/main.ebc547d4.js.map",
     "787.26a3b1ba.chunk.js.map": "/beautiful_home/static/js/787.26a3b1ba.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9e002940.css",
-    "static/js/main.24e8db90.js"
+    "static/css/main.feae423c.css",
+    "static/js/main.ebc547d4.js"
   ]
 }
