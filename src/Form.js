@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useInput } from './hooks/useInput';
 import "./Form.css";
 //import Table from './Table';
@@ -48,6 +48,11 @@ const Form=(props)=> {
   let name = [];
   window.localStorage.setItem('appPage', JSON.stringify('form'));
   
+  useEffect(() => {
+    document.getElementById("txtFirstName").focus();
+  }, []);
+
+
   const HandleSubmit = (evt) => {
     evt.preventDefault();
     //alert(`Submitting Name ${firstName} ${lastName}`);
@@ -63,6 +68,7 @@ const Form=(props)=> {
     }
     resetFirstName();
     resetLastName();
+    document.getElementById("txtFirstName").focus();
   }
 
   
@@ -70,15 +76,11 @@ const Form=(props)=> {
   return (
     <div className="formContent">
     <form onSubmit={HandleSubmit}>
-      <label className="firstName">
-        First Name:
-        <input type="text" {...bindFirstName} />
-      </label>
-      <label className="lastName">
-        Last Name:
-        <input type="text" {...bindLastName} />
-      </label>
-      <input className="submitButton" type="submit" value="Submit" />
+      <label >First Name:</label>  
+      <input id="txtFirstName" type="text" {...bindFirstName} placeholder="Your given name..."/>
+      <label >Last Name:</label>
+      <input type="text" {...bindLastName} placeholder="Your surname..."/>
+      <input type="submit" value="Submit" />
     </form>
     {names.length>0 &&
       <div>
