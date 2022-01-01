@@ -51,8 +51,11 @@ const Form=(props)=> {
   useEffect(() => {
     document.getElementById("txtFirstName").focus();
   }, []);
-
-
+  const filterName =(key)=>{
+    const temp = [...names];
+    temp.splice(key,1);
+    setNames(temp);
+  }
   const HandleSubmit = (evt) => {
     evt.preventDefault();
     //alert(`Submitting Name ${firstName} ${lastName}`);
@@ -84,13 +87,14 @@ const Form=(props)=> {
     </form>
     {names.length>0 &&
       <div>
-        <p>Record: {names.length}</p>
-      <table>
+        <h3>Record: {names.length}</h3>
+      <table id="nameList">
         <thead>
           <tr>
             <th>Key</th>
             <th>Firt Name</th>
             <th>Last Name</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -99,6 +103,7 @@ const Form=(props)=> {
               <td>{i}</td>
               <td>{c[0]}</td>
               <td>{c[1]}</td>
+              <td><button onClick={() =>filterName(i)}>Delete</button></td>
             </tr>
           )}
         </tbody>
