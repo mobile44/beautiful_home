@@ -1,19 +1,33 @@
-.pageContent {
-  padding-top:66.9px;
+.portalContent {
+  width: 100%;
+  height: 300px;
 }
-.colBlur {
-  width: 300px;
-  filter: blur(20px);
-  transition: none;
-  display:block;
+.chartDiagram {
+  padding-top:50px;
+  text-align: center;
+  position: relative;
 }
-.colReal {
-  width: 300px;
-  filter: none;
-  transition: 0.3s ease-out;
-  display:block;
+.chartLabel {
+  position: absolute;
+  padding-top: 10px;
+  top: 50%;
+  width: 100%;
+  text-align: center;
 }
-.colReal:hover {
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
+.chartButton {
+  text-align: center;
+}
+button {
+  text-align: center;
+  border: none;
+  padding: 15px 32px;
+  background-color: #055207;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+@media screen and (max-width: 500px){
+  .portalContent {
+    padding-top: 66.9px;
+  }
 }
