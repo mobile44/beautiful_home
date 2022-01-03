@@ -4,7 +4,7 @@ import './App.css';
 import Home from "./Home";
 import Album from "./Album";
 import Form from "./Form";
-import Contact from "./Contact";
+import Restful from "./Restful";
 
 function App() {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -12,7 +12,7 @@ function App() {
   const [activeHome, setActiveHome] = useState(false);
   const [activeAlbum, setActiveAlbum] = useState(false);
   const [activeForm, setActiveForm] = useState(false);
-  const [activeContact, setActiveContact] = useState(false);
+  const [activeRestful, setActiveRestful] = useState(false);
   const [currentPage, setCurrentPage] = useState("");
 
   const toggleNav = () => {
@@ -34,25 +34,25 @@ function App() {
         setActiveHome(true);
         setActiveAlbum(false);
         setActiveForm(false);
-        setActiveContact(false);
+        setActiveRestful(false);
       }
       if (appPage==="album") {
         setActiveHome(false);
         setActiveAlbum(true);
         setActiveForm(false);
-        setActiveContact(false);
+        setActiveRestful(false);
       }
       if (appPage==="form") {
         setActiveHome(false);
         setActiveAlbum(false);
         setActiveForm(true);
-        setActiveContact(false);
+        setActiveRestful(false);
       }
-      if (appPage==="contact") {
+      if (appPage==="restful") {
         setActiveHome(false);
         setActiveAlbum(false);
         setActiveForm(false);
-        setActiveContact(true);
+        setActiveRestful(true);
       }
     }
   },[currentPage,appPage]);
@@ -66,25 +66,25 @@ function App() {
       setActiveHome(true);
       setActiveAlbum(false);
       setActiveForm(false);
-      setActiveContact(false);
+      setActiveRestful(false);
     }
     if (activePage==="Album") {
       setActiveHome(false);
       setActiveAlbum(true);
       setActiveForm(false);
-      setActiveContact(false);
+      setActiveRestful(false);
     }
     if (activePage==="Form") {
       setActiveHome(false);
       setActiveAlbum(false);
       setActiveForm(true);
-      setActiveContact(false);
+      setActiveRestful(false);
     }
-    if (activePage==="Contact") {
+    if (activePage==="Restful") {
       setActiveHome(false);
       setActiveAlbum(false);
       setActiveForm(false);
-      setActiveContact(true);
+      setActiveRestful(true);
     }
     //window.localStorage.setItem('activePage', JSON.stringify(activePage));
   }
@@ -109,7 +109,7 @@ function App() {
             <Link className={activeHome?"aitems":"items"} to="/beautiful_home/" onClick={()=>updatePage("Home")}>Home</Link>
             <Link className={activeAlbum?"aitems":"items"} to="/beautiful_home/album" onClick={()=>updatePage("Album")}>Album</Link>
             <Link className={activeForm?"aitems":"items"} to="/beautiful_home/form" onClick={()=>updatePage("Form")}>Form</Link>
-            <Link className={activeContact?"aitems":"items"} to="/beautiful_home/contact" onClick={()=>updatePage("Contact")}>Contact</Link>
+            <Link className={activeRestful?"aitems":"items"} to="/beautiful_home/restful" onClick={()=>updatePage("Restful")}>Restful</Link>
           </div>
         )}
         {/*<button onClick={toggleNav} className="btn">Menu</button>*/}
@@ -124,8 +124,8 @@ function App() {
         <Route path="/beautiful_home/" element={<Home/>} />
         <Route path="/beautiful_home/album" element={<Album/> } />
         <Route path="/beautiful_home/form" element={<Form/>} />
-        <Route path="/beautiful_home/contact" element={<Contact/>} />
-        <Route path="*" element={<Home updateHome={setActiveHome} updateAlbum={setActiveAlbum} updateForm={setActiveForm} updateContact={setActiveContact} />} />
+        <Route path="/beautiful_home/restful" element={<Restful/>} />
+        <Route path="*" element={<Home updateHome={setActiveHome} updateAlbum={setActiveAlbum} updateForm={setActiveForm} updateRestful={setActiveRestful} />} />
       </Routes>
     </Router>
   )

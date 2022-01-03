@@ -10,7 +10,7 @@ function Home(props) {
       props.updateHome(true);
       props.updateAlbum(false);
       props.updateForm(false);
-      props.updateContact(false);
+      props.updateRestful(false);
     } catch(err) {}
     
   },[props])
